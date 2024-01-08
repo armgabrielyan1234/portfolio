@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <div className="h-[80px]  flex justify-around items-center">
       <div
-        className="text text-blue-950 text-2xl font-bold"
+        className="text text-blue-950 text-xl sm:text-2xl font-bold"
         onClick={() => {
           window.scrollTo({
             top: 0,
@@ -12,7 +12,7 @@ export default function Header() {
       >
         Arman Gabrielyan
       </div>
-      <div className="flex space-x-8">
+      <div className="flex  space-x-3 sm:space-x-8">
         <div className="text text-blue-950 text-xl hover:text-2xl transition-all">
           Home
         </div>
@@ -42,13 +42,25 @@ export default function Header() {
       </div>
       <div className="flex space-x-5">
         <div>
-          <img className="w-10" src="/media/photo/facebook.png" alt="" />
+          <img
+            className=" w-5 sm:w-10"
+            src="/media/photo/facebook.png"
+            alt=""
+          />
         </div>
         <div>
-          <img className="w-10" src="/media/photo/instagram.png" alt="" />
+          <img
+            className=" w-5 sm:w-10"
+            src="/media/photo/instagram.png"
+            alt=""
+          />
         </div>
         <div>
-          <img className="w-10" src="/media/photo/telegram.png" alt="" />
+          <img
+            className=" w-5 sm:w-10"
+            src="/media/photo/telegram.png"
+            alt=""
+          />
         </div>
       </div>
     </div>

@@ -23,14 +23,14 @@ export default function Main() {
             <div className="flex justify-around items-center w-screen">
               <div className="w-[600px]">
                 <h1 className="text m-5">
-                  <span className="font-bold text-7xl text-blue-950">
+                  <span className="font-bold text-3xl sm:text-7xl text-blue-950">
                     <span className="font-extrabold">{text}</span>
                   </span>
                   <span className="text-6xl text-red-700">
                     <Cursor />
                   </span>
                 </h1>
-                <h1 className="font-bold m-5 text-4xl text-blue-950">
+                <h1 className="font-bold m-5 text-2xl sm:text-4xl text-blue-950">
                   based a Armenia
                 </h1>
                 <div className="m-5 mt-10">
@@ -61,7 +61,7 @@ export default function Main() {
               className="relative bg-fixed bg-cover bg-center w-screen h-[400px]"
               style={{ backgroundImage: "url(/media/photo/team.jpg)" }}
             >
-              <div className="justify-center flex items-center h-full flex-col">
+              <div className="justify-center flex flex-wrap items-center h-full flex-col">
                 <span className="font-bold text-4xl  leading-5 tracking-wider uppercase text-white  ">
                   Its my team
                 </span>
@@ -84,7 +84,7 @@ export default function Main() {
                     </div>
                   </div>
                   <span className="text text-blue-950 text-3xl ">
-                    I knew about programming but didn't think about starting
+                    I know about programming but didn't think about starting
                     this profession
                   </span>
                 </div>
