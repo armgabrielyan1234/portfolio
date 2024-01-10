@@ -1,7 +1,7 @@
 export default function Modal({ setOpenModal }) {
   return (
     <div className="w-screen flex absolute justify-center items-center h-screen bg-yellow-200 bg-opacity-50">
-      <div className="w-[30%] pb-5 bg-yellow-100 border-2 border-black  ">
+      <div className=" w-[70%] md:w-[30%] pb-5 bg-yellow-100 border-2 border-black  ">
         <div className="w-full flex justify-end">
           <img
             src="/media/photo/close.png"
@@ -22,7 +22,7 @@ export default function Modal({ setOpenModal }) {
             </label>
             <input
               type="text"
-              className="border-2  p-2 border-black w-[300px] rounded-2xl"
+              className="border-2  p-2 border-black w-[200px] md:w-[300px] rounded-2xl"
               placeholder="Name Surname"
             />
           </div>
@@ -32,7 +32,7 @@ export default function Modal({ setOpenModal }) {
             </label>
             <input
               type="text"
-              className="border-2  p-2 border-black w-[300px] rounded-2xl"
+              className="border-2  p-2 border-black w-[200px] md:w-[300px] rounded-2xl"
               placeholder="+374"
             />
           </div>

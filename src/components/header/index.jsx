@@ -1,68 +1,81 @@
-export default function Header() {
+import React, { useEffect, useState } from "react";
+import { Bars3Icon } from "@heroicons/react/24/solid";
+
+const Nav = () => {
+  let Links = [
+    { name: "HOME", link: "/", top: 0 },
+    { name: "ABOUT", link: "/", top: 1150 },
+    { name: "WORK", link: "/", top: 1850 },
+  ];
+
+  let [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setOpen(window.innerWidth > 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="h-[80px]  flex justify-around items-center">
-      <div
-        className="text text-blue-950 text-xl sm:text-2xl font-bold"
-        onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }}
-      >
-        Arman Gabrielyan
-      </div>
-      <div className="flex  space-x-3 sm:space-x-8">
-        <div className="text text-blue-950 text-xl hover:text-2xl transition-all">
-          Home
-        </div>
+    <div className="shadow-md w-full ">
+      <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div
-          className="text text-blue-950 text-xl hover:text-2xl transition-all"
-          onClick={() => {
-            window.scrollTo({
-              top: 1150,
-              behavior: "smooth",
-            });
-          }}
+          className="font-bold text-2xl cursor-pointer flex items-center
+    text-gray-800"
         >
-          About
+          <span className="text-3xl text-blue-950 mr-1 pt-2">
+            Arman Gabrielyan
+          </span>
         </div>
 
         <div
-          className="text text-blue-950 text-xl hover:text-2xl transition-all"
-          onClick={() => {
-            window.scrollTo({
-              top: 1830,
-              behavior: "smooth",
-            });
-          }}
+          onClick={() => setOpen(!open)}
+          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden z-50"
         >
-          Work
+          <Bars3Icon className="w-10 h-10" />
         </div>
-      </div>
-      <div className="flex space-x-5">
-        <div>
-          <img
-            className=" w-5 sm:w-10"
-            src="/media/photo/facebook.png"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            className=" w-5 sm:w-10"
-            src="/media/photo/instagram.png"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            className=" w-5 sm:w-10"
-            src="/media/photo/telegram.png"
-            alt=""
-          />
-        </div>
+
+        <ul
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-yellow-200 sm:bg-yellow-100 left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 " : "-top-full"
+          }`}
+        >
+          {open && (
+            <>
+              {Links.map((link) => (
+                <li
+                  key={link.name}
+                  className="md:ml-8 text-2xl font-bold md:my-0 my-7"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    window.scrollTo({
+                      top: link.top,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  <a
+                    href={link.link}
+                    className="text-blue-950 hover:text-gray-400 duration-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </>
+          )}
+        </ul>
       </div>
     </div>
   );
-}
+};
+
+export default Nav;
