@@ -11,7 +11,7 @@ export default function About() {
             2018-2020
           </div>
         </div>
-        <span className="text mt-[20px  ] text-blue-950 text-2xl sm:text-3xl ">
+        <span className="text mt-[20px] text-blue-950 text-2xl sm:text-3xl ">
           I know about programming but didn't think about starting this
           profession
         </span>

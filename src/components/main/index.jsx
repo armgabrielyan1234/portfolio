@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import Modal from "../modal";
 import Team from "./team";
 import About from "./info/about";
 import AboutWork from "./info/about-work";
+import LatestWork from "./info/latest-work";
+
 export default function Main() {
   const [text] = useTypewriter({
     words: ["I'm a Front-end Developer", "I use React JS"],
@@ -11,6 +13,20 @@ export default function Main() {
     typeSpeed: 120,
     delaySpeed: 20,
   });
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -22,6 +38,22 @@ export default function Main() {
         </div>
       ) : (
         <div className="mt-[50px]">
+          <div className="">
+            {scrollPosition > 400 ? (
+              <div
+                className="contact w-[70px] h-[70px] transition-all rounded-full fixed z-10 sm:top-[503px] sm:left-[1250px] top-[900px] left-[350px] md:top-[800px] md:left-[700px] lg:top-[500px] lg:left-[1200px] animate-contact hover:cursor-pointer animation-delay-1s"
+                onClick={(event) => {
+                  event.preventDefault();
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <img src="/media/photo/up_icon.png" alt="" />
+              </div>
+            ) : null}
+          </div>
           <div className="flex h-[500px] items-center">
             <div className="flex justify-around items-center w-screen">
               <div className="w-[600px]">
@@ -39,7 +71,7 @@ export default function Main() {
                 <div className="m-5 mt-10">
                   <a
                     href="#_"
-                    class="relative px-6 py-3 font-bold text-black group"
+                    className="relative px-6 py-3 font-bold text-black group"
                     onClick={() => {
                       setOpenModal(true);
                     }}
@@ -64,57 +96,7 @@ export default function Main() {
             <div className="mt-[50px] ml-[50px] flex flex-col space-y-20 pb-[50px]">
               <About />
               <AboutWork />
-              <div>
-                <div className="text text-yellow-200 text-6xl sm:text-8xl font-extrabold">
-                  Latest Work
-                </div>
-                <div className="mt-10">
-                  <div className="w-screen flex flex-wrap gap-5">
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-[300px] h-[300px] border-2 border-black rounded-2xl">
-                      <img
-                        className="w-full h-full object-cover p-2 rounded-2xl"
-                        src="https://img.freepik.com/premium-photo/beautiful-coffee_39901-32.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <LatestWork />
             </div>
           </div>
         </div>
